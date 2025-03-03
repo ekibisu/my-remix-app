@@ -8,5 +8,5 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  return <h1>Hello World from Remix on Azure!</h1>;
+  return <h1>Hello World from Remix to Azure!</h1>;
 }
