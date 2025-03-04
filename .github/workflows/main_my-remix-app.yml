@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'my-remix-app'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E0CC3A1C910F439D8C53E4F0858A494C }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_}}
           package: .
