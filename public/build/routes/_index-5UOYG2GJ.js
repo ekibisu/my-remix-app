@@ -1,0 +1,1 @@
+import{c as e,e as t}from"/build/_shared/chunk-MFPRU5OA.js";var n=e(t(),1),r=()=>[{title:"New Remix App"},{name:"description",content:"Welcome to Remix!"}];function o(){return(0,n.jsx)("h1",{children:"Hello World from Remix to Azure!"})}export{o as default,r as meta};
