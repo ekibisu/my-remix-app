@@ -1,0 +1,1 @@
+import{j as e}from"./jsx-runtime-0DLF9kdB.js";const o=()=>[{title:"New Remix App"},{name:"description",content:"Welcome to Remix!"}];function r(){return e.jsx("h1",{children:"Hello World from Remix to Azure!"})}export{r as default,o as meta};
