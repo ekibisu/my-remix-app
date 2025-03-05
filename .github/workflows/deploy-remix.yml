@@ -24,7 +24,7 @@ jobs:
 
       # Add this Azure login step before the deploy step
       - name: Azure Login
-        uses: azure/login@v4
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
