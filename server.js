@@ -1,20 +1,33 @@
-const express = require("express");
-const { createRequestHandler } = require("@remix-run/express");
+import * as path from "path";
+import express from "express";
+import compression from "compression";
+import morgan from "morgan";
+import { createRequestHandler } from "@remix-run/express";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const BUILD_DIR = path.join(process.cwd(), "build");
 
 const app = express();
 
-app.use(express.static("public")); // Serve static assets
+app.use(compression());
+app.use(morgan("tiny"));
+
+app.use(
+  "/build",
+  express.static("public/build", { immutable: true, maxAge: "1y" })
+);
+app.use(express.static("public", { maxAge: "1h" }));
 
 app.all(
   "*",
   createRequestHandler({
-    getLoadContext() {
-      return {}; // Optional: pass data to loaders
-    },
+    build: await import(`file://${BUILD_DIR}/index.js`),
+    mode: process.env.NODE_ENV,
   })
 );
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Remix SSR app running on port ${PORT}`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Express server listening on port ${port}`);
 });
