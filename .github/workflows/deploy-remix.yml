@@ -11,16 +11,14 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
+    runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      # ... your build steps ...
       - uses: actions/upload-artifact@v4
         with:
-          name: node-app  
-          path: dist/     
+          name: node-app  # This name must match exactly
+          path: dist/     # Path to the files you want to upload
 
   deploy:
     needs: build         # Make sure this job runs after the build
